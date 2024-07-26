@@ -1,0 +1,64 @@
+@startuml SD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram (SD) - US020 - View Percentage of Posts Without Comments
+
+actor "Member" as Member
+participant "userRouter:Router" as UserRouter
+participant "getStatisticsByDateController:GetStatisticsByDateController" as GetStatisticsByDateController
+participant "dto:GetStatisticsByDateDTO" as dto
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant "statistics:User" as statistics
+
+activate Member
+
+Member -> UserRouter: GET /users/:userId
+activate UserRouter
+
+UserRouter -> GetStatisticsByDateController: execute(req, res)
+activate GetStatisticsByDateController
+
+GetStatisticsByDateController-> GetStatisticsByDateController: executeImp(req, res)
+activate GetStatisticsByDateController #LightBlue
+
+create dto
+GetStatisticsByDateController -> dto: new()
+
+GetStatisticsByDateController -> useCase: execute(dto)
+activate useCase
+
+useCase --> dto: get date
+activate dto
+
+dto -> useCase: give date
+deactivate dto
+
+useCase -> userRepo:getStatistics(date)
+activate userRepo
+
+create statistics
+userRepo-> statistics:new()
+
+userRepo--> useCase: statistics
+deactivate userRepo
+
+useCase--> GetStatisticsByDateController: return right(Result.ok<any>(statistics))
+deactivate userRepo
+deactivate useCase
+
+GetStatisticsByDateController --> GetStatisticsByDateController
+deactivate GetStatisticsByDateController
+
+GetStatisticsByDateController--> UserRouter: result
+deactivate GetStatisticsByDateController
+
+UserRouter --> Member: STATUS 200 ok 
+deactivate UserRouter
+deactivate Member
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+
+skinparam Monochrome true
+autonumber
+
+title Sequence Diagram (SD) - US019 - Members without activity (Posts and comments)
+
+actor "Member" as Member
+participant "Routes:statistics" as Routes
+participant "getStatisticsByDateController" as GetStatisticsByDateController
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant "SequelizeUserRepo" as SequelizeUserRepo
+
+activate Member
+Member -> Routes: GET /users/statistics/:date
+
+activate Routes
+Routes -> GetStatisticsByDateController: execute(req, res);
+
+activate GetStatisticsByDateController
+GetStatisticsByDateController -> GetStatisticsByDateController: executeImp(req, res)
+
+activate GetStatisticsByDateController
+GetStatisticsByDateController -> useCase: execute(dto)
+activate useCase
+
+useCase -> userRepo: getStatistics(date);
+activate userRepo
+
+userRepo -> SequelizeUserRepo: getUserWithoutCommentsandPostsbyDate(date);
+activate SequelizeUserRepo
+
+SequelizeUserRepo -> SequelizeUserRepo: query();
+
+
+SequelizeUserRepo --> userRepo: response[{usernames}];
+deactivate SequelizeUserRepo
+
+
+userRepo --> useCase: response [{usernames}];
+deactivate userRepo
+
+
+useCase --> GetStatisticsByDateController: ok(statistics);
+deactivate useCase
+
+
+GetStatisticsByDateController --> GetStatisticsByDateController: ok(statistics);
+deactivate GetStatisticsByDateController
+
+GetStatisticsByDateController --> Routes: ok(res, {statistics: user});
+deactivate GetStatisticsByDateController
+
+Routes --> Member: [200 OK] Member without activity in that day.
+deactivate Routes
+
+
+@enduml

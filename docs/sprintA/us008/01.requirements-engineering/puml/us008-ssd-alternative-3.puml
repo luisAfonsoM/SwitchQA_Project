@@ -1,0 +1,24 @@
+@startuml SSD3
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 3 - Member tries to upvote a previously upvoted comment
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+    
+    Member -> System: Clicks upvote arrow on a previously upvoted comment
+    activate System
+
+        System --> Member: Doesn't validate the vote
+        deactivate System
+
+deactivate Member
+
+@enduml

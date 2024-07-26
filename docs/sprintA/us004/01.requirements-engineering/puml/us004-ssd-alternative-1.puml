@@ -1,0 +1,31 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Member correctly makes a comment
+
+autonumber 
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Selects an existing post
+    activate System
+
+        System --> Member: Displays the selected post and comment section
+        deactivate System
+
+    Member -> System: Types a comment and clicks "Post comment"
+    activate System
+
+        System --> Member: Generates a success message
+        deactivate System
+
+deactivate Member
+
+@enduml
+

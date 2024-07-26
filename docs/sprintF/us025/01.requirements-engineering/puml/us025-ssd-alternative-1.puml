@@ -1,0 +1,21 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Display color yellow on date text on Recent Posts Filter
+
+autonumber
+
+actor "Member" as User
+participant "System" as System
+
+activate User
+    User -> System: Clicks on "New" in the feed
+    activate System
+        System --> User: Displays the most recent posts
+        System --> User: Posts older than two days and newer than seven days must have the timestamp in yellow 
+    deactivate System
+    deactivate User
+
+@enduml

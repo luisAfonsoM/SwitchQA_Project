@@ -1,0 +1,24 @@
+@startuml SSD5
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 5 - Member changes an upvote to a downvote
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks a previously upvoted comment and clicks downvote arrow
+    activate System
+
+        System --> Member: Decreases comment score by one
+        deactivate System
+
+deactivate Member
+
+@enduml

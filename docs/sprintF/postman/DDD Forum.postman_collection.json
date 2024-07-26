@@ -1,0 +1,5519 @@
+{
+	"info": {
+		"_postman_id": "263712b1-221b-4e7a-88d4-537cc0c11a43",
+		"name": "DDD Forum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27864449",
+		"_collection_link": "https://switchqa-group.postman.co/workspace/62620337-df33-4dab-be55-3b7a0d41dc6a/collection/27862439-263712b1-221b-4e7a-88d4-537cc0c11a43?action=share&source=collection_link&creator=27864449"
+	},
+	"item": [
+		{
+			"name": "us01 - register",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						},
+						"description": "This endpoint is used to add a new user to the system. It sends an HTTP POST request to the URL [http://localhost:5001/api/v1/users/](http://localhost:5001/api/v1/users/).\n\n### Request Parameters\n\nThe request does not require any parameters in the URL. However, it expects the following parameters in the request body:\n\n- `name` (string, required): The name of the user.\n- `email` (string, required): The email address of the user.\n- `age` (number, required): The age of the user.\n    \n\n### Response\n\nThe response to this request is a status code 200 (OK). This indicates that the user was successfully added to the system.\n\n### Example\n\nRequest:\n\n```\nPOST http://localhost:5001/api/v1/users/\n{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@example.com\",\n  \"age\": 30\n}\n\n ```\n\nResponse:\n\n```\nStatus: 200 OK\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us02 - create a post",
+			"item": [
+				{
+					"name": "text",
+					"item": [
+						{
+							"name": "register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response is not empty\", function () {",
+											"    pm.expect(pm.response.text()).to.not.be.empty;",
+											"});",
+											"",
+											"pm.test(\"Response has the expected message 'OK'\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"OK\");",
+											"});",
+											"",
+											"pm.test(\"Response time is within an acceptable range\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+											"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+											"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"pm.environment.set(\"accessToken\", response.accessToken);",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.accessToken).to.be.a('string');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.refreshToken).to.be.a('string');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.get(\"username\"));",
+											"console.log(pm.environment.get(\"password\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post text",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+											"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "link",
+					"item": [
+						{
+							"name": "register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response is not empty\", function () {",
+											"    pm.expect(pm.response.text()).to.not.be.empty;",
+											"});",
+											"",
+											"pm.test(\"Response has the expected message 'OK'\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"OK\");",
+											"});",
+											"",
+											"pm.test(\"Response time is within an acceptable range\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+											"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+											"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"pm.environment.set(\"accessToken\", response.accessToken);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.accessToken).to.be.a('string');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.refreshToken).to.be.a('string');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.get(\"username\"));",
+											"console.log(pm.environment.get(\"password\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post link",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+											"pm.environment.set(\"postLink\", pm.variables.replaceIn('{{$randomUrl}}'));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"link\": \"{{postLink}}\",\r\n    \"postType\": \"link\",\r\n    \"text\": \"\",\r\n    \"title\": \"{{postTitle}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "us03- view post",
+			"item": [
+				{
+					"name": "text",
+					"item": [
+						{
+							"name": "register",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											" pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+											"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+											"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response is not empty\", function () {",
+											"    pm.expect(pm.response.text()).to.not.be.empty;",
+											"});",
+											"",
+											"pm.test(\"Response has the expected message 'OK'\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"OK\");",
+											"});",
+											"",
+											"pm.test(\"Response time is within an acceptable range\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"pm.environment.set(\"accessToken\", response.accessToken);",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.accessToken).to.be.a('string');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.refreshToken).to.be.a('string');",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.get(\"username\"));",
+											"console.log(pm.environment.get(\"password\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post text",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+											"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view posts",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"",
+											"function getSlug(response){",
+											"    ",
+											"   for( let i of response.posts){",
+											"",
+											"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+											"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+											"                 return i.slug;",
+											"              }",
+											"            }",
+											"        }",
+											"    }",
+											"",
+											"pm.environment.set(\"postSlug\", getSlug(response));",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+											"  const responseData = pm.response.json();",
+											"  const posts = responseData.posts;",
+											"",
+											"  pm.expect(posts).to.be.an('array');",
+											"  posts.forEach(function(post) {",
+											"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    ",
+											"    responseData.posts.forEach(function(post) {",
+											"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.posts).to.be.an('array');",
+											"  ",
+											"  responseData.posts.forEach(function(post) {",
+											"    pm.expect(post.memberPostedBy).to.be.an('object');",
+											"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.posts).to.be.an('array');",
+											"    ",
+											"    responseData.posts.forEach(function(post) {",
+											"        pm.expect(post).to.be.an('object');",
+											"        pm.expect(post.numComments).to.be.a('number');",
+											"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+											"    });",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts/recent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts",
+										"recent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view a post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Slug is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.post.slug).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Title is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.post.title).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"createdAt is a valid date format\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt should be a valid date format\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"memberPostedBy is an object with reputation and user properties\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.post.memberPostedBy).to.be.an('object');",
+											"    pm.expect(responseData.post.memberPostedBy.reputation).to.exist.and.to.be.a('number');",
+											"    pm.expect(responseData.post.memberPostedBy.user).to.exist.and.to.be.an('object');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts?slug={{postSlug}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "slug",
+											"value": "{{postSlug}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "link",
+					"item": [
+						{
+							"name": "register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response is not empty\", function () {",
+											"    pm.expect(pm.response.text()).to.not.be.empty;",
+											"});",
+											"",
+											"pm.test(\"Response has the expected message 'OK'\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"OK\");",
+											"});",
+											"",
+											"pm.test(\"Response time is within an acceptable range\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+											"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+											"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"pm.environment.set(\"accessToken\", response.accessToken);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Access token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.accessToken).to.be.a('string');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Refresh token should be a string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.refreshToken).to.be.a('string');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.get(\"username\"));",
+											"console.log(pm.environment.get(\"password\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post link",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+											"pm.environment.set(\"postLink\", pm.variables.replaceIn('{{$randomUrl}}'));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"link\": \"{{postLink}}\",\r\n    \"postType\": \"link\",\r\n    \"text\": \"\",\r\n    \"title\": \"{{postTitle}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view posts",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = pm.response.json();",
+											"",
+											"function findSlug(response){",
+											"    ",
+											"   for( let i of response.posts){",
+											"",
+											"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+											"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+											"                 return i.slug;",
+											"              }",
+											"            }",
+											"        }",
+											"    }",
+											"    ",
+											"pm.environment.set(\"postSlug\", findSlug(response));",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+											"  const responseData = pm.response.json();",
+											"  const posts = responseData.posts;",
+											"",
+											"  pm.expect(posts).to.be.an('array');",
+											"  posts.forEach(function(post) {",
+											"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    ",
+											"    responseData.posts.forEach(function(post) {",
+											"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.posts).to.be.an('array');",
+											"  ",
+											"  responseData.posts.forEach(function(post) {",
+											"    pm.expect(post.memberPostedBy).to.be.an('object');",
+											"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.posts).to.be.an('array');",
+											"    ",
+											"    responseData.posts.forEach(function(post) {",
+											"        pm.expect(post).to.be.an('object');",
+											"        pm.expect(post.numComments).to.be.a('number');",
+											"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+											"    });",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts/recent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts",
+										"recent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view a post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Slug is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.post.slug).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Title is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.post.title).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"createdAt is a valid date format\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt should be a valid date format\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"memberPostedBy is an object with reputation and user properties\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.post.memberPostedBy).to.be.an('object');",
+											"    pm.expect(responseData.post.memberPostedBy.reputation).to.exist.and.to.be.a('number');",
+											"    pm.expect(responseData.post.memberPostedBy.user).to.exist.and.to.be.an('object');",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/api/v1/posts?slug={{postSlug}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "slug",
+											"value": "{{postSlug}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "us04 - comment on a post",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findSlug(response){",
+									"    ",
+									"   for( let i of response.posts){",
+									"",
+									"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+									"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+									"                 return i.slug;",
+									"              }",
+									"            }",
+									"        }",
+									"    }",
+									"",
+									"pm.environment.set(\"postSlug\", findSlug(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const posts = responseData.posts;",
+									"",
+									"  pm.expect(posts).to.be.an('array');",
+									"  posts.forEach(function(post) {",
+									"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post).to.be.an('object');",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"comment\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment slug matches the post slug in the request URL\", function () {",
+									"  const postSlug = pm.variables.get(\"postSlug\");",
+									"  const commentSlug = pm.request.url.query.get(\"slug\");",
+									"",
+									"  pm.expect(commentSlug).to.equal(postSlug);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment is successfully created\", function () {",
+									"  // Check response status",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"",
+									"  // Check response body",
+									"  const responseData = pm.response.text();",
+									"  pm.expect(responseData).to.equal(\"OK\");",
+									"",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"{{comment}}\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us05 - view comment",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findSlug(response){",
+									"    ",
+									"   for( let i of response.posts){",
+									"",
+									"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+									"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+									"                 return i.slug;",
+									"              }",
+									"            }",
+									"        }",
+									"    }",
+									"",
+									"pm.environment.set(\"postSlug\", findSlug(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const posts = responseData.posts;",
+									"",
+									"  pm.expect(posts).to.be.an('array');",
+									"  posts.forEach(function(post) {",
+									"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post).to.be.an('object');",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"comment\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment slug matches the post slug in the request URL\", function () {",
+									"  const postSlug = pm.variables.get(\"postSlug\");",
+									"  const commentSlug = pm.request.url.query.get(\"slug\");",
+									"",
+									"  pm.expect(commentSlug).to.equal(postSlug);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment is successfully created\", function () {",
+									"  // Check response status",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"",
+									"  // Check response body",
+									"  const responseData = pm.response.text();",
+									"  pm.expect(responseData).to.equal(\"OK\");",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"{{comment}}\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findCommentId(response){",
+									"   for( let i of response.comments){",
+									"       if (i.text == pm.environment.get(\"comment\") && i.member.user.username == pm.environment.get(\"username\")){",
+									"           return i.commentId;",
+									"       }",
+									"   }",
+									"}",
+									"",
+									"pm.environment.set(\"commentId\", findCommentId(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the 'comments' array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.comments).to.exist.and.to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comments array is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.comments).to.exist.and.to.be.an('array').that.is.not.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'member' object has the required fields - reputation and user\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.comments).to.be.an('array');",
+									"    responseData.comments.forEach(function(comment) {",
+									"        pm.expect(comment.member).to.exist.and.to.be.an('object');",
+									"        pm.expect(comment.member.reputation).to.exist.and.to.be.a('number');",
+									"        pm.expect(comment.member.user).to.exist.and.to.be.an('object');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Reputation is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.comments).to.be.an('array');",
+									"    ",
+									"    responseData.comments.forEach(function(comment) {",
+									"        pm.expect(comment.member.reputation).to.be.a('number');",
+									"        pm.expect(comment.member.reputation).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view comments by timestamp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Text is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.comment.text).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Text should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'childComments' array is present in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.comment.childComments).to.exist;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{commentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us06 - Reply to a comment on a post",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findSlug(response){",
+									"    ",
+									"   for( let i of response.posts){",
+									"",
+									"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+									"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+									"                 return i.slug;",
+									"              }",
+									"            }",
+									"        }",
+									"    }",
+									"",
+									"pm.environment.set(\"postSlug\", findSlug(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"comment\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment slug matches the post slug in the request URL\", function () {",
+									"  const postSlug = pm.variables.get(\"postSlug\");",
+									"  const commentSlug = pm.request.url.query.get(\"slug\");",
+									"",
+									"  pm.expect(commentSlug).to.equal(postSlug);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment is successfully created\", function () {",
+									"  // Check response status",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"",
+									"  // Check response body",
+									"  const responseData = pm.response.text();",
+									"  pm.expect(responseData).to.equal(\"OK\");",
+									"",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"{{comment}}\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findCommentId(response){",
+									"   for( let i of response.comments){",
+									"       if (i.text == pm.environment.get(\"comment\") && i.member.user.username == pm.environment.get(\"username\")){",
+									"           return i.commentId;",
+									"       }",
+									"   }",
+									"}",
+									"",
+									"pm.environment.set(\"commentId\", findCommentId(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the 'comments' array\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.comments).to.exist.and.to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comments array is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.comments).to.exist.and.to.be.an('array').that.is.not.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'member' object has the required fields - reputation and user\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.comments).to.be.an('array');",
+									"    responseData.comments.forEach(function(comment) {",
+									"        pm.expect(comment.member).to.exist.and.to.be.an('object');",
+									"        pm.expect(comment.member.reputation).to.exist.and.to.be.a('number');",
+									"        pm.expect(comment.member.user).to.exist.and.to.be.an('object');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Reputation is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.comments).to.be.an('array');",
+									"    ",
+									"    responseData.comments.forEach(function(comment) {",
+									"        pm.expect(comment.member.reputation).to.be.a('number');",
+									"        pm.expect(comment.member.reputation).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reply to comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"reply\", pm.variables.replaceIn('{{$randomLoremParagraph}}'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is within acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the response message is 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"{{reply}}\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{commentId}}/reply?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{commentId}}",
+								"reply"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us07 - vote on a post",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});",
+									"",
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"let postSlug = response.posts[0].slug;",
+									"let initialPoints = response.posts[0].points; // Get the initial points",
+									"pm.environment.set(\"postSlug\", postSlug);",
+									"pm.environment.set(\"initialPoints\", initialPoints); // Set the initial points as an environment variable",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const posts = responseData.posts;",
+									"",
+									"  pm.expect(posts).to.be.an('array');",
+									"  posts.forEach(function(post) {",
+									"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post).to.be.an('object');",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upvote post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.equal(\"OK\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Verify that the response does not contain any error messages or exceptions\", function () {",
+									"    const responseData = pm.response.text();",
+									"    ",
+									"    pm.expect(responseData).to.not.include(\"error\");",
+									"    pm.expect(responseData).to.not.include(\"exception\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"slug\": \"{{postSlug}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us08 - vote on a comment",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomLoremWords}}'));",
+									"pm.environment.set(\"postText\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"{{postText}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findSlug(response){",
+									"    ",
+									"   for( let i of response.posts){",
+									"",
+									"          if (i.title == pm.environment.get(\"postTitle\") && i.memberPostedBy.user.username == pm.environment.get(\"username\")) {",
+									"              if(i.text == pm.environment.get(\"postText\") || i.link==pm.environment.get(\"postLink\")){",
+									"                 return i.slug;",
+									"              }",
+									"            }",
+									"        }",
+									"    }",
+									"",
+									"pm.environment.set(\"postSlug\", findSlug(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'posts' array is present and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each post in the response has a non-empty slug\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const posts = responseData.posts;",
+									"",
+									"  pm.expect(posts).to.be.an('array');",
+									"  posts.forEach(function(post) {",
+									"    pm.expect(post.slug).to.exist.and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate createdAt field is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt field should be in valid date format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the reputation field is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.be.a('number').and.to.be.at.least(0);",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify numComments field is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post).to.be.an('object');",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0, \"numComments should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"comment\", pm.variables.replaceIn('{{$randomCatchPhrase}}'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment slug matches the post slug in the request URL\", function () {",
+									"  const postSlug = pm.variables.get(\"postSlug\");",
+									"  const commentSlug = pm.request.url.query.get(\"slug\");",
+									"",
+									"  pm.expect(commentSlug).to.equal(postSlug);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Comment is successfully created\", function () {",
+									"  // Check response status",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"",
+									"  // Check response body",
+									"  const responseData = pm.response.text();",
+									"  pm.expect(responseData).to.equal(\"OK\");",
+									"",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"{{comment}}\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"function findCommentId(response){",
+									"   for( let i of response.comments){",
+									"       if (i.text == pm.environment.get(\"comment\") && i.member.user.username == pm.environment.get(\"username\")){",
+									"           return i.commentId;",
+									"       }",
+									"   }",
+									"}",
+									"",
+									"pm.environment.set(\"commentId\", findCommentId(response));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{postSlug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{postSlug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vote comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is not empty\", function () {",
+									"  pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is equal to 'OK'\", function () {",
+									"  pm.expect(pm.response.text()).to.equal(\"OK\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Request method is POST\", function () {",
+									"    pm.expect(pm.request.method).to.equal(\"POST\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{commentId}}/{{voteArrow}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{commentId}}",
+								"{{voteArrow}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us09 - sort posts",
+			"item": [
+				{
+					"name": "view posts by popular",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Title is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.posts).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.title).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Title should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"createdAt is a valid date format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt is not a valid date format\");",
+									"  });",
+									"});",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const requiredFields = [\"slug\", \"title\", \"createdAt\", \"memberPostedBy\", \"numComments\", \"points\", \"text\", \"link\", \"type\", \"wasUpvotedByMe\", \"wasDownvotedByMe\"];",
+									"",
+									"",
+									"  requiredFields.forEach(function(field) {",
+									"    let i=0;",
+									"    pm.expect(responseData.posts[i]).to.have.property(field);",
+									"    i++;",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"memberPostedBy is an object with reputation and user properties\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"",
+									"  responseData.posts.forEach(function (post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.exist;",
+									"    pm.expect(post.memberPostedBy.user).to.exist;",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Slug is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.slug).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"NumComments is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Points is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.points).to.be.a('number');",
+									"        pm.expect(post.points).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts by unpopular",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Title is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.posts).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.title).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Title should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const requiredFields = [\"slug\", \"title\", \"createdAt\", \"memberPostedBy\", \"numComments\", \"points\", \"text\", \"link\", \"type\", \"wasUpvotedByMe\", \"wasDownvotedByMe\"];",
+									"",
+									"",
+									"  requiredFields.forEach(function(field) {",
+									"    let i=0;",
+									"    pm.expect(responseData.posts[i]).to.have.property(field);",
+									"    i++;",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"createdAt is a valid date format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/, \"createdAt is not a valid date format\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"memberPostedBy is an object with reputation and user properties\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"",
+									"  responseData.posts.forEach(function (post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.exist;",
+									"    pm.expect(post.memberPostedBy.user).to.exist;",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Slug is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.slug).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Slug should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"NumComments is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.numComments).to.be.a('number');",
+									"        pm.expect(post.numComments).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/unpopular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"unpopular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view posts by recent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  const requiredFields = [\"slug\", \"title\", \"createdAt\", \"memberPostedBy\", \"numComments\", \"points\", \"text\", \"link\", \"type\", \"wasUpvotedByMe\", \"wasDownvotedByMe\"];",
+									"",
+									"",
+									"  requiredFields.forEach(function(field) {",
+									"    let i=0;",
+									"    pm.expect(responseData.posts[i]).to.have.property(field);",
+									"    i++;",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Slug is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.exist.and.to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function (post) {",
+									"        pm.expect(post.slug).to.exist.and.to.be.a('string').and.to.have.length.above(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Title is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.posts).to.exist.and.to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.title).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Title should not be empty\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"CreatedAt is a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.posts).to.be.an('array');",
+									"    ",
+									"    responseData.posts.forEach(function(post) {",
+									"        pm.expect(post.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"CreatedAt must be a valid date format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"MemberPostedBy is an object with reputation and user properties\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.posts).to.be.an('array');",
+									"  ",
+									"  responseData.posts.forEach(function(post) {",
+									"    pm.expect(post.memberPostedBy).to.be.an('object');",
+									"    pm.expect(post.memberPostedBy.reputation).to.exist;",
+									"    pm.expect(post.memberPostedBy.user).to.exist;",
+									"  });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us10 - member details",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "member details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Validate that rank_comment_count is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array');",
+									"",
+									"    responseData.user.userWithMoreComments.forEach(function (user) {",
+									"        pm.expect(user.rank_comment_count).to.be.a('number');",
+									"        pm.expect(user.rank_comment_count).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"userByUsername is an object and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userByUsername).to.be.an('object').and.to.not.be.empty;",
+									"});",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate that userByUsername has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userByUsername).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.base_user_id).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.username).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.user_email).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.comment_count).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.post_count).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate that userWithMoreComments is an array and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Array should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"rank_comment_count and rank_post_count are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array');",
+									"    responseData.user.userWithMoreComments.forEach(function (user) {",
+									"        pm.expect(user.rank_comment_count).to.be.a('number').and.to.be.at.least(0);",
+									"        pm.expect(user.rank_post_count).to.be.a('number').and.to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the response body is an object and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'userWithMoreComments' array is present and contains at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.userWithMoreComments).to.exist.and.to.be.an('array');",
+									"    pm.expect(responseData.user.userWithMoreComments.length).to.be.at.least(1);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/info/PauloTeixeira",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"info",
+								"PauloTeixeira"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us11 - login",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get me user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'userWithMoreComments' array is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.user).to.exist.and.to.be.an('object');",
+									"  pm.expect(responseData.user.userWithMoreComments).to.exist.and.to.be.an('array');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/info/{{username}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"info",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us12 - logout",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the response header contains the 'Content-Type' field\", function () {",
+									"    pm.response.headers.has(\"Content-Type\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response header does not contain 'Set-Cookie' field\", function () {",
+									"    pm.expect(pm.response.headers.has(\"Set-Cookie\")).to.be.false;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us13- delete",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "member details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"var baseUserId = responseData.user.userByUsername.base_user_id;",
+									"pm.environment.set(\"baseUserId\", baseUserId);",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Validate that rank_comment_count is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array');",
+									"",
+									"    responseData.user.userWithMoreComments.forEach(function (user) {",
+									"        pm.expect(user.rank_comment_count).to.be.a('number');",
+									"        pm.expect(user.rank_comment_count).to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"userByUsername is an object and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userByUsername).to.be.an('object').and.to.not.be.empty;",
+									"});",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate that userByUsername has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userByUsername).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.base_user_id).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.username).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.user_email).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.comment_count).to.exist;",
+									"    pm.expect(responseData.user.userByUsername.post_count).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate that userWithMoreComments is an array and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Array should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"rank_comment_count and rank_post_count are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.user.userWithMoreComments).to.be.an('array');",
+									"    responseData.user.userWithMoreComments.forEach(function (user) {",
+									"        pm.expect(user.rank_comment_count).to.be.a('number').and.to.be.at.least(0);",
+									"        pm.expect(user.rank_post_count).to.be.a('number').and.to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the response body is an object and not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'userWithMoreComments' array is present and contains at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.userWithMoreComments).to.exist.and.to.be.an('array');",
+									"    pm.expect(responseData.user.userWithMoreComments.length).to.be.at.least(1);",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/info/{{username}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"info",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user by userId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response message is 'OK'\", function () {",
+									"  pm.expect(pm.response.text()).to.equal(\"OK\");",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Deleted user's data is not accessible\", function () {",
+									"  pm.expect(pm.response.text()).to.not.include(\"{{baseUserId}}\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"{{baseUserId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/{{baseUserId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{baseUserId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "us15/20- statistics",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"    pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"pm.test(\"Response has the expected message 'OK'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'));",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'));",
+									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomFirstName}}'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.accessToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Access token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.accessToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.refreshToken).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Refresh token should be a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.refreshToken).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"username\"));",
+									"console.log(pm.environment.get(\"password\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statistics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/statistics/2023-06-26/averageComments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"statistics",
+								"2023-06-26",
+								"averageComments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "post_slug",
+			"value": "6847755-titulo"
+		},
+		{
+			"key": "vote_type",
+			"value": "upvote"
+		},
+		{
+			"key": "slug_comment",
+			"value": "slug"
+		}
+	]
+}

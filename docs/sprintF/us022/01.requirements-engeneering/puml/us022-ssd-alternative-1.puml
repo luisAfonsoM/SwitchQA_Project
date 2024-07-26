@@ -1,0 +1,23 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Recent posts highlighted with a red background
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks on "New" filter on the main page
+    activate System
+
+    System --> Member : Recent posts highlighted with a red background
+    deactivate System
+
+deactivate Member
+
+@enduml

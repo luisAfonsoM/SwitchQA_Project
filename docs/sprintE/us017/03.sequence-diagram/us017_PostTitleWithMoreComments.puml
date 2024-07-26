@@ -1,0 +1,49 @@
+@startuml US017 - SD
+ 
+title Sequence Diagram (SD) - US017 - View Post Title with more comments of a specific date
+ 
+autonumber
+ 
+actor "Member" as Member
+participant "userRouter" as userRouter
+participant "getStatisticsByDateController:GetStatisticsByDateController" as GetStatisticsByDateController
+participant "dto:GetStatisticsByDateDTO" as dto
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant ":Result" as Result
+ 
+activate Member
+ 
+    Member -> userRouter: GET("/api/v1/users/statistics/:date", \n { "Authorization": accessToken })
+    activate userRouter
+ 
+    userRouter ->GetStatisticsByDateController: execute(req, res)
+    activate GetStatisticsByDateController
+ 
+    GetStatisticsByDateController-> GetStatisticsByDateController: executeImp(req, res)
+    activate GetStatisticsByDateController #LightBlue
+    create dto
+    GetStatisticsByDateController -> dto
+ 
+    GetStatisticsByDateController -> useCase: execute(dto)
+ 
+    activate useCase
+    useCase -> userRepo: getStatistics(dto.date)
+ 
+    activate userRepo
+    userRepo -> Result : getValue()
+ 
+    activate Result
+    Result -->  userRepo : value
+ 
+    deactivate Result
+ 
+    userRepo --> useCase: Result.ok<any>(values)
+    deactivate userRepo
+    useCase --> GetStatisticsByDateController: ok<{ values: any }
+    GetStatisticsByDateController -->userRouter: res.sendStatus(200)
+    deactivate GetStatisticsByDateController
+ 
+    userRouter --> Member : res.sendStatus(200)
+    deactivate userRouter
+@enduml

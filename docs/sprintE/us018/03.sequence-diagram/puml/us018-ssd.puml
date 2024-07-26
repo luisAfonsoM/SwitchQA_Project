@@ -1,0 +1,68 @@
+@startuml SD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram (SD) - US 018 - View top 3 Commenting Members for a Specific Day
+
+actor "Member" as Member
+participant "userRouter:Router" as userRouter
+participant "getStatisticsByDateController:GetStatisticsByDateController" as GetStatisticsByDateController
+participant "dto:GetStatisticsByDateDTO" as dto
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant "sequelizeUserRepo" as sequelizeUserRepo
+
+activate Member
+
+Member -> userRouter: GET /statistics/:date
+activate userRouter
+
+userRouter -> GetStatisticsByDateController: execute(req, res)
+activate GetStatisticsByDateController
+
+GetStatisticsByDateController -> GetStatisticsByDateController: executeImp(req, res)
+activate GetStatisticsByDateController #LightBlue
+
+create dto
+GetStatisticsByDateController -> dto: new()
+
+GetStatisticsByDateController -> useCase: execute(dto)
+activate useCase
+
+useCase --> dto: request date
+activate dto
+
+dto -> useCase: date
+deactivate dto
+
+useCase -> userRepo: getStatistics(date)
+deactivate useCase
+activate userRepo
+
+userRepo -> sequelizeUserRepo: getTopThreeByDate(date)
+deactivate userRepo
+activate sequelizeUserRepo
+
+sequelizeUserRepo --> useCase: getTopThreeByDate
+deactivate sequelizeUserRepo
+activate useCase
+
+useCase --> GetStatisticsByDateController: return right(ok)
+deactivate sequelizeUserRepo
+deactivate useCase
+
+GetStatisticsByDateController --> GetStatisticsByDateController
+deactivate GetStatisticsByDateController
+
+GetStatisticsByDateController--> userRouter: result
+deactivate GetStatisticsByDateController
+deactivate userRouter
+
+
+userRouter --> Member: STATUS 200 ok 
+deactivate Member
+
+@enduml

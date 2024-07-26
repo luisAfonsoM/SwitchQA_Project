@@ -1,0 +1,92 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+title Sequence Diagram (SD) - US002 - Create a Post
+
+actor "Member" as Member
+participant "Routes" as Routes
+participant "createPostController:CreatePostController" as createPostController
+participant "TextUtils" as TextUtils
+participant "useCase:CreatePost" as useCase
+participant "PostTitle" as PostTitle
+participant "PostText" as PostText
+participant "PostLink" as PostLink
+participant "PostSlug" as PostSlug
+participant "Post" as Post
+participant "memberRepo:IMemberRepo" as memberRepo
+participant "postRepo:IPostRepo" as postRepo
+
+activate Member
+Member -> Routes: HTTP Request: POST /api/v1/posts
+
+activate Routes
+Routes -> createPostController: execute(req, res)
+activate createPostController
+
+createPostController -> createPostController: executeImp(req, res)
+activate createPostController #LightBlue
+
+createPostController -> TextUtils: sanitize()
+activate TextUtils
+
+TextUtils --> createPostController: dto
+deactivate TextUtils
+
+createPostController -> useCase: execute(dto)
+activate useCase
+
+useCase -> memberRepo: getMemberByUserID(userId)
+activate memberRepo
+
+
+memberRepo --> useCase: member
+deactivate memberRepo
+
+useCase -> PostTitle: create()
+activate PostTitle
+PostTitle --> useCase: titleOrError
+deactivate PostTitle
+
+
+useCase -> PostText: create()
+activate PostText
+PostText --> useCase: textOrError
+deactivate PostText
+
+
+useCase -> PostLink: create()
+activate PostLink
+PostLink --> useCase: linkOrError
+deactivate PostLink
+
+useCase -> PostSlug: create(title)
+activate PostSlug
+PostSlug --> useCase: slugOrError
+deactivate PostSlug
+
+useCase -> Post: create(postProps)
+activate Post
+Post --> useCase: postOrError
+deactivate Post
+
+useCase -> postRepo: save(post)
+activate postRepo
+deactivate postRepo
+
+
+useCase --> createPostController: result
+deactivate useCase
+
+createPostController --> createPostController: result
+deactivate createPostController
+
+createPostController --> Routes: result
+deactivate createPostController
+
+Routes --> Member: STATUS 200 ok | "Done-zo! 🤠"
+deactivate Routes
+deactivate Member
+
+@enduml

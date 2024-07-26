@@ -1,0 +1,115 @@
+@startuml SD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram (SD) - US007 - Upvote an already upvoted post by same user
+
+actor "Member" as Member
+participant "postRouter:Router" as PostRouter
+participant "upvotePostController:UpvotePostController" as UpvoteController
+participant "dto:UpvotePostDto" as dto
+participant "useCase:UpvotePost" as useCase
+participant "memberRepo:IMemberRepo" as memberRepo
+participant "member:Member" as member
+participant "postRepo:UpvotePost" as postRepo
+participant "post:Post" as post
+participant "postVotesRepo:UpvotePost" as postVotesRepo
+participant "existingVotesOnPostByMember:PostVote" as existingVotesOnPostByMember
+participant "postService:PostService" as postService
+participant "v:PostVote" as v
+
+activate Member
+
+Member -> PostRouter: POST /posts/:slug/upvote
+activate PostRouter
+
+PostRouter -> UpvoteController: execute(req, res)
+activate UpvoteController
+
+UpvoteController -> UpvoteController: executeImp(req, res)
+activate UpvoteController #LightBlue
+
+create dto
+UpvoteController-> dto: new()
+
+UpvoteController -> useCase: execute(dto)
+activate useCase
+
+useCase --> dto: get userId
+activate dto
+
+dto -> useCase: give userId
+deactivate dto
+
+useCase -> memberRepo:getMemberByUserId(userId)
+activate memberRepo
+
+create member
+memberRepo -> member:new()
+
+memberRepo --> useCase: memberId
+deactivate memberRepo
+
+useCase -> postRepo:getPostBySlug(slug)
+activate postRepo
+
+create post
+postRepo-> post:new()
+
+postRepo --> useCase: postId
+deactivate postRepo
+
+useCase -> postVotesRepo:getVotesForPostByMemberId(postId, memberId)
+deactivate useCase
+activate postVotesRepo
+
+create existingVotesOnPostByMember
+postVotesRepo-> existingVotesOnPostByMember: new()
+
+postVotesRepo -> postService:upvotePost(post,member,existingVotesOnPostByMember)
+deactivate postVotesRepo
+activate postService
+
+postService->existingVotesOnPostByMember: loop find(v.isUpvote())
+deactivate postService
+activate existingVotesOnPostByMember
+
+existingVotesOnPostByMember->v: isUpvote()
+deactivate existingVotesOnPostByMember
+activate v
+
+v-->existingVotesOnPostByMember: true
+deactivate v
+activate existingVotesOnPostByMember
+
+existingVotesOnPostByMember->postService: return existingUpvote
+deactivate existingVotesOnPostByMember
+activate postService
+note right: Stop, upvote already exists
+
+postService --> postRepo:save(post)
+deactivate postService
+activate postRepo
+
+postRepo --> postService: return right(Result.ok<void>())
+deactivate postRepo
+activate postService
+
+postService --> UpvoteController: result
+note right: return ok
+deactivate postService
+
+UpvoteController --> UpvoteController
+deactivate UpvoteController
+
+UpvoteController --> PostRouter: result
+deactivate UpvoteController
+
+PostRouter --> Member: STATUS 200 ok | "Done-zo! 🤠"
+deactivate PostRouter
+deactivate Member
+
+@enduml

@@ -1,0 +1,134 @@
+name: CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+    - master
+    
+jobs:
+  Development:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+  
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+  
+    - name: Install jq
+      run: sudo apt-get install jq
+  
+    - name: set environment
+      run: cp .env.template .env
+  
+    - name: Start containers
+      run: docker-compose up --detach
+  
+    - name: Setup dev
+      run: npm run setup:dev
+  
+    - name: Setup public
+      run: |
+        export CI=false
+        npm run build:public
+      
+    - name: start backend
+      run: npm run start:dev &
+  
+    - name: start frontend
+      run: BROWSER=none npm run start:public &
+  
+    - name: Wait a little
+      run: sleep 10
+    
+    - name: Run API tests
+      run: npm run test -- --runInBand --testPathPattern=api
+
+  Stagging:
+    needs: Development
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+  
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+  
+    - name: Install jq
+      run: sudo apt-get install jq
+  
+    - name: set environment
+      run: cp .env.template .env
+  
+    - name: Start containers
+      run: docker-compose up --detach
+  
+    - name: Setup dev
+      run: npm run setup:dev
+  
+    - name: Setup public
+      run: |
+        export CI=false
+        npm run build:public
+      
+    - name: start backend
+      run: npm run start:dev &
+  
+    - name: start frontend
+      run: BROWSER=none npm run start:public &
+  
+    - name: Wait a little
+      run: sleep 10
+    
+    - name: Run API tests
+      run: npm run test -- --runInBand --testPathPattern=api
+    
+
+  Production:
+    needs: Stagging
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install jq
+      run: sudo apt-get install jq
+
+    - name: set environment
+      run: cp .env.template .env
+
+    - name: Start containers
+      run: docker-compose up --detach
+
+    - name: Setup dev
+      run: npm run setup:dev
+
+    - name: Setup public
+      run: |
+        export CI=false
+        npm run build:public
+      
+    - name: start backend
+      run: npm run start:dev &
+
+    - name: start frontend
+      run: BROWSER=none npm run start:public &
+
+    - name: Wait a little
+      run: sleep 10
+
+    - name: Run Newman Tests
+      run: newman run https://api.postman.com/collections/27864449-af25a6e9-a5c0-4f4f-a5fc-e67f1b176d50?access_key=PMAT-01HH0CAX2YAPCXERGFFKGCYRDH \ --reporters cli,htmlextra 

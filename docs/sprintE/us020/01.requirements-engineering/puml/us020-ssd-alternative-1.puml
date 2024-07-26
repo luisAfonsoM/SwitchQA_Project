@@ -1,0 +1,37 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - View Percentage of Posts Without Comments on a Specific Day
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+Member -> System: Log in
+    activate System
+
+        System --> Member: Logs in account
+        deactivate System
+
+    Member -> System: Click statistics
+    activate System
+
+        System --> Member: Statistics page displayed:
+        deactivate System
+
+    Member -> System: Writes a specific day on specific field.
+    activate System
+
+        System -> System: Calculate no-comment post percentage
+        System --> Member: Display percentage
+
+    deactivate System
+    deactivate Member
+
+@enduml

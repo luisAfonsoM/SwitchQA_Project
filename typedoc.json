@@ -1,0 +1,4 @@
+{
+    "entryPoints": ["./src"],
+    "out": "./src/docs/sprintD/TypeDoc"
+}

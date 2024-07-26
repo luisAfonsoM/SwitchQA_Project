@@ -1,0 +1,28 @@
+@startuml SSD2
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 2 - Logs out on a post page
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Selects a post
+    activate System
+        
+        System --> Member: Displays post page
+        deactivate System
+
+    Member -> System: Clicks "username/logout"
+    activate System
+
+        System --> Member: Logs member out and displays sucesss message 
+        deactivate System
+
+deactivate Member
+
+@enduml

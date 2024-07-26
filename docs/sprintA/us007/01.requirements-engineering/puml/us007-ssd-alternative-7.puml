@@ -1,0 +1,24 @@
+@startuml SSD7
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 7 - Visitor tries to vote
+
+autonumber
+
+actor "Visitor" as Visitor
+participant "System" as System
+
+activate Visitor
+
+    Visitor -> System: Hovers upvote or downvote arrow
+    activate System
+
+        System --> Visitor: Displays tooltip to log in message
+        deactivate System
+
+deactivate Visitor
+
+@enduml

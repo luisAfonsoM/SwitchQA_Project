@@ -1,0 +1,34 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title SSD1 - Member Interacts with Post Sorting
+
+autonumber
+
+actor "Logged-in Member" as Member
+participant "System" as System
+
+    activate Member
+    Member -> System: Navigate to index page
+    activate System
+        System -> Member: Display index page
+    deactivate System
+
+    Member -> System: Sort posts by "Popular"
+    activate System
+        System -> Member: Display "Show me purple" post with "Please comment me" link
+    deactivate System
+
+    Member -> System: Sort posts by "Recent"
+    activate System
+        System -> Member: Display "Show me purple" post without "Please comment me" link
+    deactivate System
+
+    Member -> System: Sort posts by "Unpopular"
+    activate System
+        System -> Member: Display "Show me purple" post without "Please comment me" link
+    deactivate System
+    deactivate Member
+@enduml

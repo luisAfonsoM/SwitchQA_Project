@@ -1,0 +1,29 @@
+@startuml SSD2
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title SSD2 - Member Clicks "Please Comment Me" Link
+
+autonumber
+
+actor "Logged-in Member" as Member
+participant "System" as System
+
+activate Member
+    Member -> System: Navigate to index page
+    activate System
+        System -> Member: Display index page
+    deactivate System
+
+    Member -> System: Sort posts by "Popular"
+    activate System
+        System -> Member: Display "Show me purple" post with "Please comment me" link
+    deactivate System
+
+    Member -> System: Click "Please comment me" link on "Show me purple" post
+    activate System
+        System -> Member: Navigate to comment posting page for "Show me purple" post
+    deactivate System
+    deactivate Member
+@enduml

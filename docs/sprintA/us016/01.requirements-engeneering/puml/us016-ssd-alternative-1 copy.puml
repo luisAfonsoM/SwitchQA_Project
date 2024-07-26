@@ -1,0 +1,31 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Average of posts by day
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks on "statistics" on main page
+    activate System
+
+    System --> Member: Displays statistics page
+    deactivate System
+
+    
+    Member -> System: Inserts date on "Average of posts on a Specific Date" section
+    activate System
+    Member -> System: Clicks on "Submit" button
+    
+    System --> Member: Displays the average of posts on a specific date
+    deactivate System
+
+deactivate Member
+
+@enduml

@@ -1,0 +1,63 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram - Average of posts per day
+
+actor "Member" as Member
+participant "routes:statistics" as Routes
+participant "getStatisticsByDateController:GetStatisticsByDateController" as GetStatisticsByDateController
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant "SequelizeUserRepo" as SequelizeUserRepo
+
+activate Member
+Member -> Routes: GET /users/statistics/:date
+
+activate Routes
+Routes -> GetStatisticsByDateController: execute(req, res);
+
+activate GetStatisticsByDateController
+GetStatisticsByDateController -> GetStatisticsByDateController: executeImp(req, res)
+
+activate GetStatisticsByDateController
+GetStatisticsByDateController -> useCase: execute(dto)
+activate useCase
+
+useCase -> userRepo: getStatistics(date);
+activate userRepo
+
+
+userRepo -> SequelizeUserRepo: averagePostsByDate(date);
+activate SequelizeUserRepo
+
+SequelizeUserRepo -> SequelizeUserRepo: query();
+activate SequelizeUserRepo
+
+SequelizeUserRepo --> SequelizeUserRepo: response[{total_posts; total_members; average}];
+deactivate SequelizeUserRepo
+
+SequelizeUserRepo --> userRepo: response[{total_posts; total_members; average}];
+deactivate SequelizeUserRepo
+
+
+userRepo --> useCase: response [{total_posts; total_members; average}];
+deactivate userRepo
+
+
+useCase --> GetStatisticsByDateController: ok(statistics);
+deactivate useCase
+
+
+GetStatisticsByDateController --> GetStatisticsByDateController: ok(statistics);
+deactivate GetStatisticsByDateController
+
+GetStatisticsByDateController --> Routes: ok(res, {statistics: user});;
+deactivate GetStatisticsByDateController
+
+Routes --> Member: [200 OK] Average of Posts per day
+deactivate Routes
+@enduml

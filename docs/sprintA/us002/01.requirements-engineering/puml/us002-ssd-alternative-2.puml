@@ -1,0 +1,29 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 2 - Member correctly make a post with a embedded link
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks Submit
+    activate System
+        
+        System --> Member: Displays the "New submission" page
+        deactivate System
+
+    Member -> System: Types in "Title", clicks "Link", types in "Link" and clicks in "Submit post"
+    activate System
+
+        System --> Member: Displays success message
+        deactivate System
+
+deactivate Member
+
+@enduml
+

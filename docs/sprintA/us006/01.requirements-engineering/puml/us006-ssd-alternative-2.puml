@@ -1,0 +1,36 @@
+@startuml SSD2
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 2 - Member replies to a comment via timestamp
+
+autonumber 
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Selects an existing post 
+    activate System
+
+        System --> Member: Displays the selected post
+        deactivate System
+
+    Member -> System: Clicks on the timestamp of a comment
+    activate System
+
+        System --> Member: Displays the comment 
+        deactivate System
+
+    Member -> System: Types a reply and clicks "Submit reply" 
+    activate System
+
+        System --> Member: Displays a success message
+        deactivate System
+
+deactivate Member
+
+@enduml

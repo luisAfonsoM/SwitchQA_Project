@@ -1,0 +1,31 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Member correctly make a post
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks Submit
+    activate System
+
+        System --> Member: Displays the "New submission" page
+        deactivate System
+
+    Member -> System: Types in "Title", clicks "Text", types in "Text" and clicks in "Submit post"
+    activate System
+
+        System --> Member: Displays success message
+        deactivate System
+
+deactivate Member
+
+@enduml
+

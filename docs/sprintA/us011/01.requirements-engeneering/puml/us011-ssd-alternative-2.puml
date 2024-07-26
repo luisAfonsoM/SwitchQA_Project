@@ -1,0 +1,35 @@
+@startuml SSD2
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative Two - Login through tooltip in posts
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Hovers upvote or downvote arrows on a post
+    activate System
+
+        System --> Member: Displays tooltip
+        deactivate System
+
+    Member -> System: Clicks "Here"
+    activate System
+
+        System --> Member: Displays login page
+        deactivate System
+
+    Member -> System: Enters "username", "password" and clicks "Submit"
+    activate System
+
+        System --> Member: Displays success message and main page
+        deactivate System
+
+deactivate Member
+
+@enduml

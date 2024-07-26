@@ -1,0 +1,24 @@
+@startuml SSD2
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 2 - Member downvotes a comment
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks downvote arrow on a comment
+    activate System
+
+        System --> Member: Decreases post vote score by one
+        deactivate System
+
+deactivate Member
+
+@enduml

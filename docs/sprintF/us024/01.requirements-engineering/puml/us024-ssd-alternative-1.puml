@@ -1,0 +1,22 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1
+
+autonumber
+
+actor "Member" as User
+participant "System" as System
+
+activate User
+    User -> System: Clicks on "Unpopular" in the feed
+    activate System
+        System --> User: Displays the most unpopular posts
+        System --> User: Posts from the last two days have the timestamp in green text
+    deactivate System
+    deactivate User
+
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml SSD2
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 2 - Sort posts by Popular
+
+autonumber
+
+
+actor "Visitor" as Visitor
+participant "System" as System
+
+activate Visitor
+
+    Visitor -> System: Clicks on "Popular" in the feed
+    activate System
+
+        System --> Visitor : Displays the highest scored posts
+        deactivate System
+
+deactivate Visitor
+
+@enduml

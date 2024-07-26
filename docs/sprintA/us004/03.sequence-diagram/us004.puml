@@ -1,0 +1,32 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram (SD) - Write a comment on a post 
+
+actor "Member" as Member
+participant "commentRouter:Router" as commentRouter
+participant "ReplyToPostController" as ReplyToPostController
+particpant "dto: ReplyToPostDTO" as dto
+participant "useCase: ReplyToPost" as useCase
+participant 
+
+
+member -> commentRouter: post
+
+commentRouter-> ReplyToPostController
+
+ReplyToPostController --> ReplyToPostController: executeImpl(req, res)
+
+create dto
+ReplyToPostController -> dto(new)
+
+ReplyToPostController -> useCase:execute(dto)
+
+useCase ->ReplyToPost:execute(req)
+
+ReplyToPost -> 
+
+

@@ -1,0 +1,25 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 3
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+    Member -> System: Navigate to index page
+    activate System
+        System --> Member: Display index page
+    deactivate System
+    Member -> System: Clicks on "Unpopular" in the feed
+    activate System
+        System --> Member: Displays the recent posts
+        System --> Member: Older than 5 days posts don't show timestamp in red
+    deactivate System
+    deactivate Member
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Visitor inputs all data correctly
+
+autonumber
+
+actor "Visitor" as Visitor
+participant "System" as System
+
+activate Visitor
+
+    Visitor -> System: Clicks "Join" button
+    activate System
+
+        System --> Visitor: Displays create account page
+        deactivate System
+
+    Visitor -> System: Fills out "email", "username", "password" and clicks "Submit"
+    activate System
+
+        System --> Visitor: Displays success message
+        deactivate Visitor
+
+deactivate System
+
+@enduml

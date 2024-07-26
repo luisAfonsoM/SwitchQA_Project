@@ -1,0 +1,24 @@
+@startuml SSD6
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 6 - Member changes a downvote to an upvote
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks a previously downvoted post and clicks upvote arrow
+    activate System
+
+        System --> Member: Increases post score by one
+        deactivate Member
+
+deactivate System
+
+@enduml

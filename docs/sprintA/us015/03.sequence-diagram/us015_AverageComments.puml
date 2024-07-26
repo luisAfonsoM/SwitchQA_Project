@@ -1,0 +1,61 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram (SD) - US015 - Average of comments for a specific day
+
+actor "Member" as Member
+participant "userRouter:Router" as UserRouter
+participant "getStatisticsByDateController:GetStatisticsByDateController" as GetStatisticsByDateController
+participant "dto:GetStatisticsByDateDTO" as dto
+participant "useCase:GetStatisticsByDate" as useCase
+participant "userRepo:IUserRepo" as userRepo
+participant "statistics:Average" as statistics
+
+activate Member
+
+Member -> UserRouter: GET /statistics/:date
+activate UserRouter
+
+UserRouter -> GetStatisticsByDateController: execute(req, res)
+activate GetStatisticsByDateController
+
+GetStatisticsByDateController-> GetStatisticsByDateController: executeImp(req, res)
+activate GetStatisticsByDateController #LightBlue
+
+create dto
+GetStatisticsByDateController -> dto: new()
+
+GetStatisticsByDateController -> useCase: execute(dto)
+activate useCase
+
+
+
+useCase -> userRepo:getStatistics(date)
+
+activate userRepo
+
+userRepo-> statistics:averageCommentsPerDay()
+activate statistics
+statistics-> userRepo:averageResponse
+deactivate statistics
+
+userRepo--> useCase: result:statisticsObj
+deactivate userRepo
+
+useCase--> GetStatisticsByDateController: OK(stats.obj)
+deactivate userRepo
+deactivate useCase
+
+GetStatisticsByDateController --> GetStatisticsByDateController 
+deactivate GetStatisticsByDateController
+
+GetStatisticsByDateController--> UserRouter: Response(stats)
+deactivate GetStatisticsByDateController
+
+UserRouter --> Member: STATUS 200 ok 
+deactivate UserRouter
+deactivate Member
+@enduml

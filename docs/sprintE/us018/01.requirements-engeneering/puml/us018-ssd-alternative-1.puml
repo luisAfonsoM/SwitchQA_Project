@@ -1,0 +1,30 @@
+    @startuml SSD1
+    skinparam monochrome true
+    skinparam packageStyle rectangle
+    skinparam shadowing false
+
+    title System Sequence Diagram (SSD) - Alternative 1 - Top 3 Commenting Members by Date 
+
+    autonumber
+
+    actor "Member" as Member
+    participant "System" as System
+
+    activate Member
+
+        Member -> System: Clicks on "statistics" on main page
+        activate System
+
+        System --> Member: Displays statistics page
+        deactivate System
+
+        Member -> System: Selects a specific day for comment counting    
+        activate System
+        Member -> System: Clicks on "Submit" button
+
+        System --> Member: Displays the top 3 commenting members usernames for the selected day
+        deactivate System
+
+    deactivate Member
+
+    @enduml

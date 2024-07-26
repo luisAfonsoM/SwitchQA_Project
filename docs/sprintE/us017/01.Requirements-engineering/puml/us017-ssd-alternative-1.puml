@@ -1,0 +1,37 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - The post with more comments for a specific day
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+Member -> System: Log in
+    activate System
+
+        System --> Member: Logs in account
+        deactivate System
+
+    Member -> System: Click statistics
+    activate System
+
+        System --> Member: Statistics page displayed:
+        deactivate System
+
+    Member -> System: Writes a specific day on specific field.
+    activate System
+
+        System -> System: Search the Post With more Comments
+        System --> Member: Display Post Title
+
+    deactivate System
+    deactivate Member
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml SSD1
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One - Login
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks "Join"
+    activate System
+
+        System --> Member: Displays "Create account" page
+        deactivate System
+
+    Member -> System: Clicks "Login"
+    activate System
+
+        System --> Member: Displays login page
+        deactivate System
+
+    Member -> System: Enters "username", "password" and clicks "Submit"
+    activate System
+
+        System --> Member : Displays success message and main page
+        deactivate System
+
+deactivate Member
+
+@enduml
+

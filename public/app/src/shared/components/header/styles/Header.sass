@@ -1,0 +1,28 @@
+@import "../../../../assets/styles/variables"
+
+.header
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-around
+
+  .header-links
+    margin-top: 0.5rem
+    a // this will target all <a> elements inside .header-links
+      margin-right: 10px // space between links
+      &:last-child // this targets the last <a> element
+        margin-right: 0 // removes the margin from the last link
+
+  .logo-container
+    margin-right: 2rem
+    @media (max-width: $mobile-breakpoint-large)
+      margin-right: 0.5rem
+      img
+        max-width: 3rem
+
+  .content-container
+    width: 100%
+    padding-right: 1.5em
+    h1, p
+      padding: 0
+      margin: 0

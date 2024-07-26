@@ -1,0 +1,30 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+title System Sequence Diagram (SSD) - Alternative 1 - View comments and their data
+
+actor "Visitor" as Visitor
+participant "System" as System
+
+activate Visitor
+
+    Visitor -> System : Accesses DDD Forum
+    activate System
+
+        System --> Visitor: Displays posts
+        deactivate System
+
+    Visitor -> System: Clicks on a post
+    activate System
+
+        System --> Visitor: Displays post and comment data
+        deactivate System
+
+deactivate Visitor
+
+@enduml

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+newman run https://api.postman.com/collections/27864449-af25a6e9-a5c0-4f4f-a5fc-e67f1b176d50?access_key=PMAT-01HH0CAX2YAPCXERGFFKGCYRDH 

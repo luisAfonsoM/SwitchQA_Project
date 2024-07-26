@@ -1,0 +1,25 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Logout from main page
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+
+activate Member
+
+    Member -> System: Clicks "username/logout"
+    activate System
+
+        System --> Member: Logs member out and displays sucesss message 
+        deactivate System
+
+deactivate Member
+
+@enduml

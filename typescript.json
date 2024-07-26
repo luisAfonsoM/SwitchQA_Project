@@ -1,0 +1,7 @@
+{
+  "My Default Test Suite": {
+    "prefix": "test-suite",
+    "body": ["describe(\"Suite name\", () => {", "  beforeAll(async () => {", " ", "});", "  test(\"\", () => {", "  });", "});"],
+    "description": "Inserts a default test suite"
+  }
+}

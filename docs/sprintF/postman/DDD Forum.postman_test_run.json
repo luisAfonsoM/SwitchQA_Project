@@ -1,0 +1,3359 @@
+{
+	"id": "01b65938-7fb8-4a21-b915-e03bb8c91e20",
+	"name": "DDD Forum",
+	"timestamp": "2023-11-26T19:31:23.596Z",
+	"collection_id": "27862439-263712b1-221b-4e7a-88d4-537cc0c11a43",
+	"folder_id": 0,
+	"environment_id": "27864449-98080ba3-a561-4b3e-93ed-ce43c72affad",
+	"totalPass": 277,
+	"delay": "1000",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-11-26T19:30:07.199Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9eeadc65-4194-4aed-a126-d9577d81043d",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 211,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "f7fcf0cc-a847-4a51-a52c-d3e75b4c3672",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 209,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "05a0dccc-3ee2-419a-94ad-604bf6348750",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 205,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "29d808fb-9cb4-4dec-80d6-5b53e3bd2720",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "58becc23-b236-4867-8f5e-39b9d950606a",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 211,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "eb71a2b6-a890-4341-84d1-1474da69a956",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "22246826-fa9e-425a-a2e0-b98ad73216b2",
+			"name": "create post link",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "fa2a1839-4ac9-4447-83b2-a6904ca0d1b7",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 209,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "113098aa-1c94-4a3f-8a6d-50af3e0bac8a",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 203,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "aa773a82-3242-43c8-841f-cc1ed0dab536",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "810a0ece-2afd-4c6f-97e8-85db82292038",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "a51bf012-d3b8-4884-90eb-7c50aa69e2a3",
+			"name": "view a post",
+			"url": "http://localhost:5001/api/v1/posts?slug=6774951-iusto-quae-sint",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Slug is a non-empty string": true,
+				"Title is a non-empty string": true,
+				"createdAt is a valid date format": true,
+				"memberPostedBy is an object with reputation and user properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Slug is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Title is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"createdAt is a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"memberPostedBy is an object with reputation and user properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Slug is a non-empty string": true,
+					"Title is a non-empty string": true,
+					"createdAt is a valid date format": true,
+					"memberPostedBy is an object with reputation and user properties": true
+				}
+			]
+		},
+		{
+			"id": "182015c4-5950-4c5b-9d70-ea86094148ce",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 209,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "93fdd74d-d562-436e-b276-ac4134638261",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 217,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				217
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "8c424dd4-68e4-4b1e-93dc-d58a6b3eb57f",
+			"name": "create post link",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c6701c76-e49f-4856-bad8-6907fe8c86f2",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "31abd094-b505-44af-a855-4a080a0dfba6",
+			"name": "view a post",
+			"url": "http://localhost:5001/api/v1/posts?slug=2812471-earum-est-ducimus",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Slug is a non-empty string": true,
+				"Title is a non-empty string": true,
+				"createdAt is a valid date format": true,
+				"memberPostedBy is an object with reputation and user properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Slug is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Title is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"createdAt is a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"memberPostedBy is an object with reputation and user properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Slug is a non-empty string": true,
+					"Title is a non-empty string": true,
+					"createdAt is a valid date format": true,
+					"memberPostedBy is an object with reputation and user properties": true
+				}
+			]
+		},
+		{
+			"id": "9f2662a4-f917-4d2a-b1a0-4da9d0a6c28e",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 210,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "0d50298c-d201-4ebe-8154-9795aadcc196",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 258,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				258
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "a3fb2afe-8306-4370-98a7-ba0601c076e6",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3b39ecf8-132e-4230-baab-26ccbfc7d63e",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "13a3e388-71db-4d79-baa4-31b7acbe0510",
+			"name": "create a comment",
+			"url": "http://localhost:5001/api/v1/comments?slug=9249071-repudiandae-sit-nihil",
+			"time": 88,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is not empty": true,
+				"Comment slug matches the post slug in the request URL": true,
+				"Comment is successfully created": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment slug matches the post slug in the request URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment is successfully created": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is not empty": true,
+					"Comment slug matches the post slug in the request URL": true,
+					"Comment is successfully created": true
+				}
+			]
+		},
+		{
+			"id": "d946bb4c-6072-4713-82f1-73d4a3d17212",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 205,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "36ea254b-8df1-45c9-9718-456c39dd70fa",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 202,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "b2709639-953e-4dba-b117-d4d6853d3f17",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c14c490e-98dd-46f6-9cb8-02c699c7d77a",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "cbffbe9c-3100-479a-928a-d81d455173f9",
+			"name": "create a comment",
+			"url": "http://localhost:5001/api/v1/comments?slug=4775765-nulla-fugiat-maxime",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is not empty": true,
+				"Comment slug matches the post slug in the request URL": true,
+				"Comment is successfully created": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment slug matches the post slug in the request URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment is successfully created": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is not empty": true,
+					"Comment slug matches the post slug in the request URL": true,
+					"Comment is successfully created": true
+				}
+			]
+		},
+		{
+			"id": "98d2b527-cc59-4ce9-a022-304b5fb7c346",
+			"name": "view comments",
+			"url": "http://localhost:5001/api/v1/comments?slug=4775765-nulla-fugiat-maxime",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has the 'comments' array": true,
+				"Comments array is not empty": true,
+				"Verify that the 'member' object has the required fields - reputation and user": true,
+				"Reputation is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the 'comments' array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comments array is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'member' object has the required fields - reputation and user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Reputation is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has the 'comments' array": true,
+					"Comments array is not empty": true,
+					"Verify that the 'member' object has the required fields - reputation and user": true,
+					"Reputation is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "798b8ddb-4b30-430d-9e2f-dc2adf582d9a",
+			"name": "view comments by timestamp",
+			"url": "http://localhost:5001/api/v1/comments/6e84e94f-8593-4aa8-9fa7-cd59c8dd5032",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Text is a non-empty string": true,
+				"Verify that the 'childComments' array is present in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Text is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'childComments' array is present in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Text is a non-empty string": true,
+					"Verify that the 'childComments' array is present in the response": true
+				}
+			]
+		},
+		{
+			"id": "d0b0a96b-e337-48dc-8f4d-677db2286f11",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 215,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				215
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "0c1bd83f-37fa-4e2d-b0a2-f7efb3e1b53d",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 202,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "264df88a-4b29-4527-8286-dba6a4f40676",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f0772e3a-cb2e-4a01-95b9-7812d3c03b6e",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "00885ad8-4f66-4345-be27-5a0227063a17",
+			"name": "create a comment",
+			"url": "http://localhost:5001/api/v1/comments?slug=6116557-sed-possimus-assumenda",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is not empty": true,
+				"Comment slug matches the post slug in the request URL": true,
+				"Comment is successfully created": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment slug matches the post slug in the request URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment is successfully created": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is not empty": true,
+					"Comment slug matches the post slug in the request URL": true,
+					"Comment is successfully created": true
+				}
+			]
+		},
+		{
+			"id": "e14281e1-a04b-40ae-8778-962cfa149050",
+			"name": "view comments",
+			"url": "http://localhost:5001/api/v1/comments?slug=6116557-sed-possimus-assumenda",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has the 'comments' array": true,
+				"Comments array is not empty": true,
+				"Verify that the 'member' object has the required fields - reputation and user": true,
+				"Reputation is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the 'comments' array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comments array is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'member' object has the required fields - reputation and user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Reputation is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has the 'comments' array": true,
+					"Comments array is not empty": true,
+					"Verify that the 'member' object has the required fields - reputation and user": true,
+					"Reputation is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "7d39f1ef-8cb9-40d0-81ab-5c00cdc1c552",
+			"name": "reply to comment",
+			"url": "http://localhost:5001/api/v1/comments/05e64cb9-5b26-4e62-8f48-fa000c438daf/reply?slug=6116557-sed-possimus-assumenda",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response time is within acceptable range": true,
+				"Verify that the response message is 'OK'": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response message is 'OK'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response time is within acceptable range": true,
+					"Verify that the response message is 'OK'": true
+				}
+			]
+		},
+		{
+			"id": "44bc9091-acc9-4dd5-9a41-7bea06fdc511",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 211,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "03f60750-2d0c-4b09-b10a-f8a2a4d3dfb6",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 299,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				299
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "f95168ca-03d0-4ace-9f9e-f1ab870bc408",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d37fc369-9d3f-43ae-9a17-99373a55ab82",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "52a728d8-4e93-4fca-acba-fdc36b0e83b0",
+			"name": "upvote post",
+			"url": "http://localhost:5001/api/v1/posts/upvote",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is 'OK'": true,
+				"Response time is within an acceptable range": true,
+				"Verify that the response does not contain any error messages or exceptions": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response does not contain any error messages or exceptions": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is 'OK'": true,
+					"Response time is within an acceptable range": true,
+					"Verify that the response does not contain any error messages or exceptions": true
+				}
+			]
+		},
+		{
+			"id": "4e339abc-d3f6-4741-80bd-b517706f9730",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 208,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				208
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "0c5c0140-0cf4-4223-8c3f-b1c4eb32135f",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "bb14dff2-5f30-4869-96dc-7863211048bf",
+			"name": "create post text",
+			"url": "http://localhost:5001/api/v1/posts",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5ba797c8-8ee6-4bdc-9ab3-7f2572894f5b",
+			"name": "view posts",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate the 'posts' array is present and contains at least one element": true,
+				"Each post in the response has a non-empty slug": true,
+				"Validate createdAt field is in a valid date format": true,
+				"Verify that the reputation field is a non-negative integer": true,
+				"Verify numComments field is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the 'posts' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post in the response has a non-empty slug": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate createdAt field is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the reputation field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify numComments field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate the 'posts' array is present and contains at least one element": true,
+					"Each post in the response has a non-empty slug": true,
+					"Validate createdAt field is in a valid date format": true,
+					"Verify that the reputation field is a non-negative integer": true,
+					"Verify numComments field is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "23ae61cb-cc5e-4878-81c2-4067c6c1be68",
+			"name": "create a comment",
+			"url": "http://localhost:5001/api/v1/comments?slug=4456773-aliquam-dolores-ipsa",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is not empty": true,
+				"Comment slug matches the post slug in the request URL": true,
+				"Comment is successfully created": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment slug matches the post slug in the request URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment is successfully created": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is not empty": true,
+					"Comment slug matches the post slug in the request URL": true,
+					"Comment is successfully created": true
+				}
+			]
+		},
+		{
+			"id": "3602fb7a-3bcc-4d87-9cc1-8ea7d0ac8b71",
+			"name": "view comments",
+			"url": "http://localhost:5001/api/v1/comments?slug=4456773-aliquam-dolores-ipsa",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8a0dac8d-c5c3-4715-a801-335bec71ef2b",
+			"name": "vote comment",
+			"url": "http://localhost:5001/api/v1/comments/6ca02777-ed76-47fb-8f55-b4d77d860716/downvote",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response body is not empty": true,
+				"Response body is equal to 'OK'": true,
+				"Request method is POST": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is equal to 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Request method is POST": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response body is not empty": true,
+					"Response body is equal to 'OK'": true,
+					"Request method is POST": true
+				}
+			]
+		},
+		{
+			"id": "046856de-d201-462e-bc7e-4babffdc2da0",
+			"name": "view posts by popular",
+			"url": "http://localhost:5001/api/v1/posts/popular",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Title is a non-empty string": true,
+				"createdAt is a valid date format": true,
+				"Response has the required fields": true,
+				"memberPostedBy is an object with reputation and user properties": true,
+				"Slug is a non-empty string": true,
+				"NumComments is a non-negative integer": true,
+				"Points is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Title is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"createdAt is a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"memberPostedBy is an object with reputation and user properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Slug is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"NumComments is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Points is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Title is a non-empty string": true,
+					"createdAt is a valid date format": true,
+					"Response has the required fields": true,
+					"memberPostedBy is an object with reputation and user properties": true,
+					"Slug is a non-empty string": true,
+					"NumComments is a non-negative integer": true,
+					"Points is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "f62db2ed-9716-4e49-9888-5e70cbb49ba4",
+			"name": "view posts by unpopular",
+			"url": "http://localhost:5001/api/v1/posts/unpopular",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Title is a non-empty string": true,
+				"Response has the required fields": true,
+				"createdAt is a valid date format": true,
+				"memberPostedBy is an object with reputation and user properties": true,
+				"Slug is a non-empty string": true,
+				"NumComments is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Title is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"createdAt is a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"memberPostedBy is an object with reputation and user properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Slug is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"NumComments is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Title is a non-empty string": true,
+					"Response has the required fields": true,
+					"createdAt is a valid date format": true,
+					"memberPostedBy is an object with reputation and user properties": true,
+					"Slug is a non-empty string": true,
+					"NumComments is a non-negative integer": true
+				}
+			]
+		},
+		{
+			"id": "3b486925-669c-4ba9-9b36-daf8012076d2",
+			"name": "view posts by recent",
+			"url": "http://localhost:5001/api/v1/posts/recent",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has the required fields": true,
+				"Slug is a non-empty string": true,
+				"Title is a non-empty string": true,
+				"CreatedAt is a valid date format": true,
+				"MemberPostedBy is an object with reputation and user properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Slug is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Title is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"CreatedAt is a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"MemberPostedBy is an object with reputation and user properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has the required fields": true,
+					"Slug is a non-empty string": true,
+					"Title is a non-empty string": true,
+					"CreatedAt is a valid date format": true,
+					"MemberPostedBy is an object with reputation and user properties": true
+				}
+			]
+		},
+		{
+			"id": "1fcb9fff-6c57-4dde-b8ca-5baf4881160d",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 206,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				206
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "7477d596-2338-409c-8ccb-00fb32fc3f37",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 202,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "59f9a4fa-e9d6-4fb4-a981-a02bf6b83c5f",
+			"name": "member details",
+			"url": "http://localhost:5001/api/v1/users/info/PauloTeixeira",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate that rank_comment_count is a non-negative integer": true,
+				"userByUsername is an object and not empty": true,
+				"Response status code is 200": true,
+				"Validate that userByUsername has the required fields": true,
+				"Validate that userWithMoreComments is an array and not empty": true,
+				"rank_comment_count and rank_post_count are non-negative integers": true,
+				"Verify that the response body is an object and not empty": true,
+				"Verify that the 'userWithMoreComments' array is present and contains at least one element": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that rank_comment_count is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"userByUsername is an object and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that userByUsername has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that userWithMoreComments is an array and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"rank_comment_count and rank_post_count are non-negative integers": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response body is an object and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'userWithMoreComments' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate that rank_comment_count is a non-negative integer": true,
+					"userByUsername is an object and not empty": true,
+					"Response status code is 200": true,
+					"Validate that userByUsername has the required fields": true,
+					"Validate that userWithMoreComments is an array and not empty": true,
+					"rank_comment_count and rank_post_count are non-negative integers": true,
+					"Verify that the response body is an object and not empty": true,
+					"Verify that the 'userWithMoreComments' array is present and contains at least one element": true
+				}
+			]
+		},
+		{
+			"id": "d53b1486-a7e8-4c96-ab67-7faecf3a55fe",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 213,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				213
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "f0a31f34-1ae5-42d3-b6d5-90a1ed5e7eb0",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "b74b2fdf-0e70-41aa-86f2-fa500db4ee32",
+			"name": "get me user",
+			"url": "http://localhost:5001/api/v1/users/info/Edgar",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verify that the 'userWithMoreComments' array is present in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'userWithMoreComments' array is present in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verify that the 'userWithMoreComments' array is present in the response": true
+				}
+			]
+		},
+		{
+			"id": "0a2e6ec0-2c33-43d5-8c63-8751bd581a9d",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 209,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "fb1e9a46-1fbf-42bf-b3a2-00a1a4970945",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 218,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "f68ee98c-fcde-442b-964e-2c5949c0e4f3",
+			"name": "logout",
+			"url": "http://localhost:5001/api/v1/users/logout",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true,
+				"Verify that the response header contains the 'Content-Type' field": true,
+				"Response header does not contain 'Set-Cookie' field": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response header contains the 'Content-Type' field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response header does not contain 'Set-Cookie' field": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true,
+					"Verify that the response header contains the 'Content-Type' field": true,
+					"Response header does not contain 'Set-Cookie' field": true
+				}
+			]
+		},
+		{
+			"id": "64e6baf6-cb5e-4a3e-8821-9c84e23c44f1",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 207,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				207
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "ca530afb-76f1-4480-81d9-68e5dc631572",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 203,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "c8d0ca31-7a43-4ea6-b936-463bd32e7efa",
+			"name": "member details",
+			"url": "http://localhost:5001/api/v1/users/info/Nasir",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate that rank_comment_count is a non-negative integer": true,
+				"userByUsername is an object and not empty": true,
+				"Response status code is 200": true,
+				"Validate that userByUsername has the required fields": true,
+				"Validate that userWithMoreComments is an array and not empty": true,
+				"rank_comment_count and rank_post_count are non-negative integers": true,
+				"Verify that the response body is an object and not empty": true,
+				"Verify that the 'userWithMoreComments' array is present and contains at least one element": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that rank_comment_count is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"userByUsername is an object and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that userByUsername has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate that userWithMoreComments is an array and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"rank_comment_count and rank_post_count are non-negative integers": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response body is an object and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'userWithMoreComments' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate that rank_comment_count is a non-negative integer": true,
+					"userByUsername is an object and not empty": true,
+					"Response status code is 200": true,
+					"Validate that userByUsername has the required fields": true,
+					"Validate that userWithMoreComments is an array and not empty": true,
+					"rank_comment_count and rank_post_count are non-negative integers": true,
+					"Verify that the response body is an object and not empty": true,
+					"Verify that the 'userWithMoreComments' array is present and contains at least one element": true
+				}
+			]
+		},
+		{
+			"id": "7cff34dc-5d49-43cc-be5b-256b8e9d69fd",
+			"name": "user by userId",
+			"url": "http://localhost:5001/api/v1/users/46b24e57-6d9e-4176-863a-b85b1cd27af3",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response message is 'OK'": true,
+				"Deleted user's data is not accessible": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response message is 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Deleted user's data is not accessible": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response message is 'OK'": true,
+					"Deleted user's data is not accessible": true
+				}
+			]
+		},
+		{
+			"id": "1c1cbe3e-d04d-4be6-8242-d6e49aadd999",
+			"name": "register",
+			"url": "http://localhost:5001/api/v1/users/",
+			"time": 206,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is not empty": true,
+				"Response has the expected message 'OK'": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the expected message 'OK'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				206
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is not empty": true,
+					"Response has the expected message 'OK'": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "ba944b26-1f58-494b-aabb-fc2a2b0dcda3",
+			"name": "login",
+			"url": "http://localhost:5001/api/v1/users/login",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Access token is not empty": true,
+				"Access token should be a string": true,
+				"Refresh token is not empty": true,
+				"Refresh token should be a string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Access token should be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Refresh token should be a string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Access token is not empty": true,
+					"Access token should be a string": true,
+					"Refresh token is not empty": true,
+					"Refresh token should be a string": true
+				}
+			]
+		},
+		{
+			"id": "110b732a-60ac-4d05-9af2-989411daa0c7",
+			"name": "statistics",
+			"url": "http://localhost:5001/api/v1/users/statistics/2023-06-26/averageComments",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 6982,
+	"collection": {
+		"requests": [
+			{
+				"id": "9eeadc65-4194-4aed-a126-d9577d81043d",
+				"method": "POST"
+			},
+			{
+				"id": "f7fcf0cc-a847-4a51-a52c-d3e75b4c3672",
+				"method": "POST"
+			},
+			{
+				"id": "05a0dccc-3ee2-419a-94ad-604bf6348750",
+				"method": "POST"
+			},
+			{
+				"id": "29d808fb-9cb4-4dec-80d6-5b53e3bd2720",
+				"method": "POST"
+			},
+			{
+				"id": "58becc23-b236-4867-8f5e-39b9d950606a",
+				"method": "POST"
+			},
+			{
+				"id": "eb71a2b6-a890-4341-84d1-1474da69a956",
+				"method": "POST"
+			},
+			{
+				"id": "22246826-fa9e-425a-a2e0-b98ad73216b2",
+				"method": "POST"
+			},
+			{
+				"id": "fa2a1839-4ac9-4447-83b2-a6904ca0d1b7",
+				"method": "POST"
+			},
+			{
+				"id": "113098aa-1c94-4a3f-8a6d-50af3e0bac8a",
+				"method": "POST"
+			},
+			{
+				"id": "aa773a82-3242-43c8-841f-cc1ed0dab536",
+				"method": "POST"
+			},
+			{
+				"id": "810a0ece-2afd-4c6f-97e8-85db82292038",
+				"method": "GET"
+			},
+			{
+				"id": "a51bf012-d3b8-4884-90eb-7c50aa69e2a3",
+				"method": "GET"
+			},
+			{
+				"id": "182015c4-5950-4c5b-9d70-ea86094148ce",
+				"method": "POST"
+			},
+			{
+				"id": "93fdd74d-d562-436e-b276-ac4134638261",
+				"method": "POST"
+			},
+			{
+				"id": "8c424dd4-68e4-4b1e-93dc-d58a6b3eb57f",
+				"method": "POST"
+			},
+			{
+				"id": "c6701c76-e49f-4856-bad8-6907fe8c86f2",
+				"method": "GET"
+			},
+			{
+				"id": "31abd094-b505-44af-a855-4a080a0dfba6",
+				"method": "GET"
+			},
+			{
+				"id": "9f2662a4-f917-4d2a-b1a0-4da9d0a6c28e",
+				"method": "POST"
+			},
+			{
+				"id": "0d50298c-d201-4ebe-8154-9795aadcc196",
+				"method": "POST"
+			},
+			{
+				"id": "a3fb2afe-8306-4370-98a7-ba0601c076e6",
+				"method": "POST"
+			},
+			{
+				"id": "3b39ecf8-132e-4230-baab-26ccbfc7d63e",
+				"method": "GET"
+			},
+			{
+				"id": "13a3e388-71db-4d79-baa4-31b7acbe0510",
+				"method": "POST"
+			},
+			{
+				"id": "d946bb4c-6072-4713-82f1-73d4a3d17212",
+				"method": "POST"
+			},
+			{
+				"id": "36ea254b-8df1-45c9-9718-456c39dd70fa",
+				"method": "POST"
+			},
+			{
+				"id": "b2709639-953e-4dba-b117-d4d6853d3f17",
+				"method": "POST"
+			},
+			{
+				"id": "c14c490e-98dd-46f6-9cb8-02c699c7d77a",
+				"method": "GET"
+			},
+			{
+				"id": "cbffbe9c-3100-479a-928a-d81d455173f9",
+				"method": "POST"
+			},
+			{
+				"id": "98d2b527-cc59-4ce9-a022-304b5fb7c346",
+				"method": "GET"
+			},
+			{
+				"id": "798b8ddb-4b30-430d-9e2f-dc2adf582d9a",
+				"method": "GET"
+			},
+			{
+				"id": "d0b0a96b-e337-48dc-8f4d-677db2286f11",
+				"method": "POST"
+			},
+			{
+				"id": "0c1bd83f-37fa-4e2d-b0a2-f7efb3e1b53d",
+				"method": "POST"
+			},
+			{
+				"id": "264df88a-4b29-4527-8286-dba6a4f40676",
+				"method": "POST"
+			},
+			{
+				"id": "f0772e3a-cb2e-4a01-95b9-7812d3c03b6e",
+				"method": "GET"
+			},
+			{
+				"id": "00885ad8-4f66-4345-be27-5a0227063a17",
+				"method": "POST"
+			},
+			{
+				"id": "e14281e1-a04b-40ae-8778-962cfa149050",
+				"method": "GET"
+			},
+			{
+				"id": "7d39f1ef-8cb9-40d0-81ab-5c00cdc1c552",
+				"method": "POST"
+			},
+			{
+				"id": "44bc9091-acc9-4dd5-9a41-7bea06fdc511",
+				"method": "POST"
+			},
+			{
+				"id": "03f60750-2d0c-4b09-b10a-f8a2a4d3dfb6",
+				"method": "POST"
+			},
+			{
+				"id": "f95168ca-03d0-4ace-9f9e-f1ab870bc408",
+				"method": "POST"
+			},
+			{
+				"id": "d37fc369-9d3f-43ae-9a17-99373a55ab82",
+				"method": "GET"
+			},
+			{
+				"id": "52a728d8-4e93-4fca-acba-fdc36b0e83b0",
+				"method": "POST"
+			},
+			{
+				"id": "4e339abc-d3f6-4741-80bd-b517706f9730",
+				"method": "POST"
+			},
+			{
+				"id": "0c5c0140-0cf4-4223-8c3f-b1c4eb32135f",
+				"method": "POST"
+			},
+			{
+				"id": "bb14dff2-5f30-4869-96dc-7863211048bf",
+				"method": "POST"
+			},
+			{
+				"id": "5ba797c8-8ee6-4bdc-9ab3-7f2572894f5b",
+				"method": "GET"
+			},
+			{
+				"id": "23ae61cb-cc5e-4878-81c2-4067c6c1be68",
+				"method": "POST"
+			},
+			{
+				"id": "3602fb7a-3bcc-4d87-9cc1-8ea7d0ac8b71",
+				"method": "GET"
+			},
+			{
+				"id": "8a0dac8d-c5c3-4715-a801-335bec71ef2b",
+				"method": "POST"
+			},
+			{
+				"id": "046856de-d201-462e-bc7e-4babffdc2da0",
+				"method": "GET"
+			},
+			{
+				"id": "f62db2ed-9716-4e49-9888-5e70cbb49ba4",
+				"method": "GET"
+			},
+			{
+				"id": "3b486925-669c-4ba9-9b36-daf8012076d2",
+				"method": "GET"
+			},
+			{
+				"id": "1fcb9fff-6c57-4dde-b8ca-5baf4881160d",
+				"method": "POST"
+			},
+			{
+				"id": "7477d596-2338-409c-8ccb-00fb32fc3f37",
+				"method": "POST"
+			},
+			{
+				"id": "59f9a4fa-e9d6-4fb4-a981-a02bf6b83c5f",
+				"method": "GET"
+			},
+			{
+				"id": "d53b1486-a7e8-4c96-ab67-7faecf3a55fe",
+				"method": "POST"
+			},
+			{
+				"id": "f0a31f34-1ae5-42d3-b6d5-90a1ed5e7eb0",
+				"method": "POST"
+			},
+			{
+				"id": "b74b2fdf-0e70-41aa-86f2-fa500db4ee32",
+				"method": "GET"
+			},
+			{
+				"id": "0a2e6ec0-2c33-43d5-8c63-8751bd581a9d",
+				"method": "POST"
+			},
+			{
+				"id": "fb1e9a46-1fbf-42bf-b3a2-00a1a4970945",
+				"method": "POST"
+			},
+			{
+				"id": "f68ee98c-fcde-442b-964e-2c5949c0e4f3",
+				"method": "POST"
+			},
+			{
+				"id": "64e6baf6-cb5e-4a3e-8821-9c84e23c44f1",
+				"method": "POST"
+			},
+			{
+				"id": "ca530afb-76f1-4480-81d9-68e5dc631572",
+				"method": "POST"
+			},
+			{
+				"id": "c8d0ca31-7a43-4ea6-b936-463bd32e7efa",
+				"method": "GET"
+			},
+			{
+				"id": "7cff34dc-5d49-43cc-be5b-256b8e9d69fd",
+				"method": "DELETE"
+			},
+			{
+				"id": "1c1cbe3e-d04d-4be6-8242-d6e49aadd999",
+				"method": "POST"
+			},
+			{
+				"id": "ba944b26-1f58-494b-aabb-fc2a2b0dcda3",
+				"method": "POST"
+			},
+			{
+				"id": "110b732a-60ac-4d05-9af2-989411daa0c7",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -1,0 +1,37 @@
+@startuml Use Case Diagram
+
+
+left to right direction
+
+
+actor "Member" as Member
+actor "Visitor" as Visitor
+
+
+rectangle UseCaseDiagram-DDD Forum.com {
+  usecase "us001 - Register a new account" as us001
+  usecase "us002 - Create a post" as us002
+  usecase "us003 - View posts and their data" as us003
+  usecase "us004 - Write a comment on a post" as us004
+  usecase "us005 - View comments and their data" as us005
+  usecase "us006 - Reply to a comment on a post" as us006
+  usecase "us007 - Vote on a post" as us007
+  usecase "us008 - Vote on a comment" as us008
+  usecase "us009 - Sort posts by popular or new" as us009
+  usecase "us010 - View member's profiles" as us010
+
+}
+
+Member --|> Visitor
+Visitor --> us001
+Member --> us002
+Visitor --> us003
+Member --> us004
+Visitor --> us005
+Member --> us006
+Member --> us007
+Member --> us008
+Visitor --> us009
+Visitor --> us010
+
+@enduml

@@ -1,0 +1,13 @@
+# .prettierignore
+# Exclude all files except for TypeScript files in specific directories
+
+*.md
+node_modules/
+build/
+dist/
+coverage/
+.eslintcache/
+*.js
+*.json
+!**/*.ts
+.github/workflows/pipeline.yml

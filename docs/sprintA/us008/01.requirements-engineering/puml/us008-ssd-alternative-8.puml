@@ -1,0 +1,30 @@
+@startuml SSD8
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 8 - Member upvotes on a reply of a comment
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks "reply" on a comment
+    activate System
+
+        System -> Member: Displays reply page
+        deactivate System
+
+    Member -> System: Clicks upvote arrow on a comment
+    activate System
+        
+        System --> Member: Increases post score by one
+        deactivate System
+
+deactivate Member
+
+@enduml

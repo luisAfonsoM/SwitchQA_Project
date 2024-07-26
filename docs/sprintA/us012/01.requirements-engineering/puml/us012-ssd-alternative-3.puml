@@ -1,0 +1,37 @@
+@startuml SSD3
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 3 - Logs out on a comment page
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Selects a post
+    activate System
+        
+        System --> Member: Displays post page
+        deactivate System
+
+    Member -> System: Clicks "reply" on a comment
+    activate System
+
+        System --> Member: Displays comment page
+        deactivate System
+
+    Member -> System: Clicks "username/logout"
+    activate System
+
+        System --> Member: Logs member out and displays sucesss message 
+        deactivate System
+
+deactivate Member
+
+
+
+@enduml
+

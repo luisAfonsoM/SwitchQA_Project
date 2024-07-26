@@ -1,0 +1,68 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram - Visitor Sort Posts by Unpopular
+
+actor "Member" as Member
+participant "routes:unpopular" as Routes
+participant "getUnpopularPostController:GetUnpopularPostController" as GetUnpopularPostController
+participant "useCase:GetUnpopularPost" as useCase
+participant "postRepo:IPostRepo" as postRepo
+participant "PostDetailsMap" as PostDetailsMap
+participant "PostDetails" as PostDetails
+
+activate Member
+Member -> Routes: GET /posts/unpopular
+
+activate Routes
+Routes -> GetUnpopularPostController: execute(req, res);
+
+activate GetUnpopularPostController
+GetUnpopularPostController -> GetUnpopularPostController: executeImp(req, res)
+
+activate GetUnpopularPostController
+GetUnpopularPostController -> useCase: execute(dto)
+
+activate useCase
+useCase -> postRepo: getUnpopularPosts(dto);
+
+activate postRepo
+postRepo -> postRepo: createBaseDetailsQuery();
+
+activate postRepo
+postRepo -> postRepo:PostModel.findAll()
+
+postRepo -> PostDetailsMap: posts.map(posts);
+activate PostDetailsMap 
+
+PostDetailsMap -> PostDetails: create(props);
+activate PostDetails
+
+PostDetails --> PostDetailsMap: ok(newPostDetails);
+deactivate PostDetails
+
+PostDetailsMap --> postRepo: toDTO(PostDTO);
+deactivate PostDetailsMap
+
+postRepo --> postRepo:PostDetails[];
+deactivate postRepo
+
+postRepo --> useCase: PostDetails[];
+deactivate postRepo
+
+useCase --> GetUnpopularPostController: ok(posts);
+deactivate useCase
+
+GetUnpopularPostController --> GetUnpopularPostController: ok(posts);
+deactivate GetUnpopularPostController
+
+GetUnpopularPostController --> Routes: UnpopularPosts[];
+deactivate GetUnpopularPostController
+
+Routes --> Member: [200 OK] Unpopular Posts
+deactivate Routes
+@enduml

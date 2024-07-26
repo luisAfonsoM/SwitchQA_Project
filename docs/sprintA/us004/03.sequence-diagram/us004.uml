@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+autonumber
+hide footbox
+actor member
+
+member -> Comments : createComment()
+activate Comments
+
+Comments -> restClient : sendPost()
+activate restClient
+
+restClient -> IAxiosHttpRequestArgs : callEndpoint()
+activate IAxiosHttpRequestArgs
+
+IAxiosHttpRequestArgs -> database : insert query
+activate database
+
+IAxiosHttpRequestArgs --> restClient: 200 OK
+deactivate database
+deactivate IAxiosHttpRequestArgs
+
+restClient --> Comments : 200 OK
+deactivate restClient
+
+Comments --> member : "Done-zo! 🤠"
+deactivate Comments
+
+@enduml
+
+

@@ -1,0 +1,35 @@
+@startuml SSD3
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative Thre - Login through tooltip in comments
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Hovers upvote or downvote arrows on a comment
+    activate System
+
+        System --> Member: Displays tooltip
+        deactivate System
+
+    Member -> System: Clicks "Here"
+    activate System
+
+        System --> Member: Displays login page
+        deactivate System
+
+    Member -> System: Enters "username", "password" and clicks "Submit"
+    activate System
+
+        System --> Member: Displays success message and main page
+        deactivate System
+
+deactivate Member
+
+@enduml

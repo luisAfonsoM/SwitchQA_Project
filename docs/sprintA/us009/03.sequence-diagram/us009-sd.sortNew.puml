@@ -1,0 +1,62 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+autonumber
+
+title Sequence Diagram - Visitor Sort Posts by New
+
+
+actor "Member" as Member
+participant "routes:recent" as Routes
+participant "getRecentPostController:GetRecentPostController" as GetRecentPostController
+participant "useCase:GetRecentPost" as useCase
+participant "postRepo:GetRecentPosts" as postRepo
+participant "PostRepo" as PostRepo
+
+
+activate Member
+Member -> Routes: GET /posts/recent
+activate Routes
+
+Routes -> GetRecentPostController: execute(req, res);
+activate GetRecentPostController
+
+GetRecentPostController ->> GetRecentPostController: executeImp(req, res)
+activate GetRecentPostController
+
+
+GetRecentPostController -> useCase: execute(dto)
+activate useCase
+
+useCase -> postRepo: getRecentPosts(dto);
+activate postRepo
+
+postRepo -> PostRepo: createBaseDetailsQuery();
+activate PostRepo
+
+PostRepo --> postRepo:  Query structure obj.
+deactivate PostRepo
+
+
+postRepo ->> postRepo:PostModel.findAll()
+activate postRepo
+return posts.map()
+
+postRepo --> useCase: PostDetails[];
+deactivate postRepo
+
+
+useCase --> GetRecentPostController: ok(posts);
+
+deactivate useCase
+
+deactivate GetRecentPostController
+
+GetRecentPostController --> Routes: RecentPosts[];
+deactivate GetRecentPostController
+
+Routes --> Member: [200 OK] Recent Posts
+deactivate Routes
+@enduml

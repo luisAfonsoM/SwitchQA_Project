@@ -1,0 +1,30 @@
+@startuml SSD9
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 9 - Member downvotes on a reply of a comment
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks "reply" on a comment
+    activate System
+
+        System -> Member: Displays reply page
+        deactivate System
+
+    Member -> System: Clicks downvote arrow on a comment
+    activate System
+        
+        System --> Member: Decreases post score by one
+        deactivate System
+
+deactivate Member
+
+@enduml

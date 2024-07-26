@@ -1,0 +1,24 @@
+@startuml SSD1
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative 1 - Member upvotes a post
+
+autonumber
+
+actor "Member" as Member
+participant "System" as System
+
+activate Member
+
+    Member -> System: Clicks upvote arrow on a post
+    activate System
+
+        System --> Member: Increases post score by one
+        deactivate System    
+
+deactivate Member
+
+@enduml

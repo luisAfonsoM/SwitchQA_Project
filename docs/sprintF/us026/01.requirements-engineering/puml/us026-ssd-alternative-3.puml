@@ -1,0 +1,24 @@
+@startuml SSD3
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title SSD3 - Non-Logged User Views Post
+
+autonumber
+
+actor "Non-Logged User" as User
+participant "System" as System
+
+activate User
+    User -> System: Navigate to index page
+    activate System
+        System -> User: Display index page
+    deactivate System
+
+    User -> System: Sort posts by "Popular"
+    activate System
+        System -> User: Display "Show me purple" post without "Please comment me" link
+    deactivate System
+    deactivate User
+@enduml
